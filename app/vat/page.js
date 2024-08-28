@@ -8,8 +8,6 @@ export default function Home() {
   function handleSubmit(e) {
     e.preventDefault();
     const price = e.currentTarget.price.value;
-    const vat = 0.07;
-
     setResult((price * 0.07).toFixed(2));
   }
 
@@ -32,7 +30,11 @@ export default function Home() {
                 <label>VAT: </label>
               </td>
               <td>
-                <input type="text" name="vat" defaultValue={0.07} />
+                <input
+                  type="text"
+                  name="vat"
+                  defaultValue={process.env.VAT_RATE}
+                />
               </td>
             </tr>
             <tr>
