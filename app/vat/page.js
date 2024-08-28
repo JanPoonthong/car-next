@@ -1,8 +1,22 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [result, setResult] = useState(0);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const price = e.currentTarget.price.value;
+    const vat = 0.07;
+
+    setResult((price * 0.07).toFixed(2));
+  }
+
   return (
     <>
       <h1>VAT Calculator</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <table>
           <tbody>
             <tr>
@@ -18,7 +32,7 @@ export default function Home() {
                 <label>VAT: </label>
               </td>
               <td>
-                <input type="text" name="vat" />
+                <input type="text" name="vat" defaultValue={0.07} />
               </td>
             </tr>
             <tr>
@@ -31,7 +45,7 @@ export default function Home() {
                 <label>Result: </label>
               </td>
               <td>
-                <input type="text" name="result" />
+                <input type="text" name="result" defaultValue={result} />
               </td>
             </tr>
           </tbody>
