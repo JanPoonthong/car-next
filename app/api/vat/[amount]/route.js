@@ -1,5 +1,5 @@
-export async function GET(request) {
-  const amount = request.nextUrl.searchParams.get("amount") || null;
+export async function GET(request, { params }) {
+  const amount = params.amount || null;
   const rate = process.env.VAT_RATE;
   let vat = null;
   if (amount !== null) {
